@@ -26,10 +26,11 @@ body {
 }
 
 
-
 main.container {
     width: 450px;
+    height: 100%;
     margin: auto;
-    margin-top: 140px;
+    padding: 40px;
+    padding-top: 140px;
     background-color: white;
 }

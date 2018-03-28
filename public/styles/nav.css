@@ -11,6 +11,8 @@ nav#nav-bar {
     color: #e8fdff;
     padding-left: 2em;
     padding-right: 2em;
+    align-items: center;
+    display: flex;
 }
 
 #nav-bar img.logo {
@@ -23,5 +25,4 @@ nav#nav-bar {
     float: left;
     margin: 10px;
     font-size: 200%;
-    line-height: 200%;
 }
