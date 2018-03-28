@@ -6,41 +6,64 @@
 
  // Test / driver code (temporary). Eventually will get this from the server.
 
-//take in tweetData
-//create new tweet element
-//match up user.name to (article.tweet)h2
-//match up handle to (article.tweet)h4
-//match up content.text to (article.tweet)p
-//append these to the element
-//return this element to the caller
-
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": {
-      "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-      "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-      "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+const data = [
+  {
+    "user": {
+      "name": "Newton",
+      "avatars": {
+        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
+        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+      },
+      "handle": "@SirIsaac"
     },
-    "handle": "@SirIsaac"
+    "content": {
+      "text": "If I have seen further it is by standing on the shoulders of giants"
+    },
+    "created_at": 1461116232227
   },
-  "content": {
-    "text": "If I have seen further it is by standing on the shoulders of giants"
+  {
+    "user": {
+      "name": "Descartes",
+      "avatars": {
+        "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
+        "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
+        "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
+      },
+      "handle": "@rd" },
+    "content": {
+      "text": "Je pense , donc je suis"
+    },
+    "created_at": 1461113959088
   },
-  "created_at": 1461116232227
-}
+  {
+    "user": {
+      "name": "Johann von Goethe",
+      "avatars": {
+        "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
+        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
+        "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
+      },
+      "handle": "@johann49"
+    },
+    "content": {
+      "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
+    },
+    "created_at": 1461113796368
+  }
+];
+
 
 
 $(document).ready(function() {
 
-    var $tweet = createTweetElement(tweetData);
 
-    function createTweetElement(tweetData) {
-      let username = tweetData['user'].name;
-      let handle = tweetData['user'].handle;
-      let avatar = tweetData['user'].avatars['small'];
-      let text = tweetData['content'].text;
-      let day = new Date(tweetData.created_at);
+    function createTweetElement(tweet) {
+      let username = tweet['user'].name;
+      let handle = tweet['user'].handle;
+      let avatar = tweet['user'].avatars['small'];
+      let text = tweet['content'].text;
+      let day = new Date(tweet.created_at);
       let today = new Date();
       let oneDay = 24*60*60*1000
       let days = Math.round(Math.abs((day-today))/oneDay) + ' days ago.'
@@ -74,20 +97,35 @@ $(document).ready(function() {
       $days.text(days);
       $footer.append($days);
 
-      let $pIcon = $("<p>");
-      $footer.append($pIcon);
+      let $icons = $("<p>");
+      $footer.append($icons);
 
-      let $icon = $("<img>").addClass("icon");
-      $icon.attr('src', "../images/flag.png");
-      $icon.attr('src', "../images/retweet.png");
-      $icon.attr('src', "../images/heart.png");
-      $pIcon.append($icon);
+      let $flag = $("<img>").addClass("icon");
+      $flag.attr('src', "../images/flag.png");
+      $icons.append($flag);
 
-      $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+      let $retweet = $("<img>").addClass("icon");
+      $retweet.attr('src', "../images/retweet.png");
+      $icons.append($retweet);
+
+      let $heart = $("<img>").addClass("icon");
+      $heart.attr('src', "../images/heart.png");
+      $icons.append($heart);
+
+      return $tweet
     }
+
+
+    function renderTweets(tweetArray) {
+      tweetArray.forEach(function(tweet) {
+        let $tweet = createTweetElement(tweet);
+        $('#tweets-container').append($tweet);
+      });
+
+  }
+  renderTweets(data);
+
   });
-
-
 
 
 
