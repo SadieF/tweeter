@@ -21,14 +21,14 @@ span.counter {
 }
 
 .error {
-  color: red;
+    color: red;
 }
 
 article.tweet {
     background-color: white;
     border: 1px solid #eee;
     border-radius: 10px;
-    margin-top: 80px;
+    margin-top: 15px;
 }
 
 header {
@@ -50,15 +50,18 @@ article.tweet header h2 {
     border-bottom: 0;
     margin: 10px;
     float: left;
+    font-size: 98%
 }
 
 p {
     margin: 2em;
+    word-wrap: break-word;
 }
 
 h4 {
     float: right;
     margin: 10px;
+    font-size: 90%;
 }
 
 footer {
@@ -70,13 +73,12 @@ footer {
 }
 
 footer p {
-  margin: 0px;
-  height: 30px;
-
+    margin: 0px;
+    height: 30px;
 }
 
 footer p.Days {
-  margin: 5px 0 0 5px;
+    margin: 5px 0 0 5px;
 }
 
 img.icon {
@@ -89,9 +91,9 @@ article.tweet:hover {
     background-color: white;
     border: 2px solid #eee;
     border-radius: 10px;
-    margin-top: 80px;
+    margin-top: 15px;
 }
 
 article.tweet:hover img.icon {
-  display: block;
+    display: block;
 }

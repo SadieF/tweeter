@@ -112,41 +112,32 @@ $(document).ready(function() {
         return $tweet
     }
 
-
-
     function renderTweets(tweetArray) {
         tweetArray.forEach(function(tweet) {
             let $tweet = createTweetElement(tweet);
-            $('#tweets-container').append($tweet);
+            $('#tweets-container').prepend($tweet);
         });
-
     }
 
+    function sendTweet(tweet) {
+        $.post('/tweets/', tweet).done(loadTweets)
+    }
 
-
-    $('.new-tweet form').on('submit', function(event) {
-        event.preventDefault();
-        var data = $('.new-tweet form').serialize();
-        $.post('/tweets/', data).done(function() {
-
-        })
+    $('.new-tweet form').on('submit', function(e) {
+        e.preventDefault();
+        const text = $(this).find('textarea').val();
+        if (text === '') {
+            alert('Please enter a valid Tweet!');
+        } else if (text.length > 140) {
+            alert('Whoa there tiger, you can only use 140 characters!');
+        } else {
+            sendTweet({ text });
+        }
     })
 
-    renderTweets(data);
+    function loadTweets() {
+        $.get('/tweets/').done(renderTweets);
+    }
+
+    loadTweets();
 });
-
-// $('#new-product form').on('submit', function(e) {
-//     // 1. prevent the default behaviour
-//     e.preventDefault()
-
-//     // 2. get the data of the form
-//     var data = $('#new-product form').serialize()
-
-//     // 3. submit using ajax
-//     $.post('/products', data).done(function() {
-//         // 4. rerender the product list
-//         loadAndRenderProducts()
-//     })
-// })
-
-// loadAndRenderProducts()

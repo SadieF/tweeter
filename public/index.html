@@ -31,7 +31,7 @@
         <span class="header">Tweeter</span>
     </nav>
     <!-- Page-specific (main) content here -->
-    <main class="container" id="tweets-container">
+    <main class="container">
         <section class="new-tweet">
             <h2>Compose Tweet</h2>
             <form action="/tweets/" method="POST">
@@ -40,19 +40,7 @@
                 <span class="counter">140</span>
             </form>
         </section>
-        <article class="tweet">
-            <header>
-                <img class="avatar" src="/images/bumblebee.jpg">
-                <h2>Sadie Freeman</h2>
-                <h4>SadieF</h4>
-            </header>
-            <p>Little Tweet Here</p>
-            <footer>
-                <p class="Days">10 days ago</p>
-                <p><img class="icon" src="../images/flag.png">
-                    <img class="icon" src="../images/retweet.png">
-                    <img class="icon" src="../images/heart.png"></p>
-            </footer>
+        <article id="tweets-container">
         </article>
     </main>
 </body>
