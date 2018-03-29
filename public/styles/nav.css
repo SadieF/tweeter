@@ -26,3 +26,27 @@ nav#nav-bar {
     margin: 10px;
     font-size: 200%;
 }
+
+input[type="button"] {
+    margin-left: auto;
+    height: 60px;
+    width: 100px;
+    color: #00a087;
+    font-weight: 500;
+    border-radius: 10px;
+    border: 1px solid black;
+    background: #e8fdff;
+    background-image: url(/images/editIcon.png);
+    background-repeat: no-repeat;
+    background-size: 90px;
+    background-position: center;
+}
+
+input[type="button"]:hover {
+    color: black;
+    background: white;
+    background-image: url(/images/editIcon.png);
+    background-repeat: no-repeat;
+    background-size: 90px;
+    background-position: center;
+}

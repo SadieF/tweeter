@@ -125,19 +125,28 @@ $(document).ready(function() {
 
     $('.new-tweet form').on('submit', function(e) {
         e.preventDefault();
-        const text = $(this).find('textarea').val();
+        const text = $(this).find('textarea').val().trim();
         if (text === '') {
-            alert('Please enter a valid Tweet!');
+            $.flash('Please enter a valid Tweet!');
+            $('.counter').html(140);
         } else if (text.length > 140) {
-            alert('Whoa there tiger, you can only use 140 characters!');
+            $.flash('Whoa there tiger, you can only use 140 characters!');
+            $('.counter').html(140).removeClass('error');
         } else {
             sendTweet({ text });
+            $('.counter').html(140);
+            this.reset();
         }
     })
 
     function loadTweets() {
         $.get('/tweets/').done(renderTweets);
     }
+
+    $(':button').click(function() {
+        $('.new-tweet').slideToggle()
+        $('textarea').focus();
+    })
 
     loadTweets();
 });
