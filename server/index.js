@@ -12,6 +12,7 @@ app.use(express.static("public"));
 const MongoClient = require("mongodb").MongoClient;
 const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 
+//Loads MongoDB and processes for tweet storage
 MongoClient.connect(MONGODB_URI, (err, db) => {
     if (err) {
         console.error(`Failed to connect: ${MONGOBD_URI}`);

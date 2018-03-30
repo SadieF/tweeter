@@ -1,7 +1,6 @@
-
 $(document).ready(function() {
 
-
+    //Builds the DOM tree using JQuery
     function createTweetElement(tweet) {
         let username = tweet['user'].name;
         let handle = tweet['user'].handle;
@@ -67,6 +66,7 @@ $(document).ready(function() {
         $.post('/tweets/', tweet).done(loadTweets)
     }
 
+    //Handles the error messaging for tweets
     $('.new-tweet form').on('submit', function(e) {
         e.preventDefault();
         const text = $(this).find('textarea').val().trim();
@@ -87,10 +87,12 @@ $(document).ready(function() {
         $.get('/tweets/').done(renderTweets);
     }
 
+    //Slides the Compose Tweet text box up an down when Compose button is pressed
     $(':button').click(function() {
         $('.new-tweet').slideToggle()
         $('textarea').focus();
-    })
+    }); //button click function ends
 
+    //calling loadTweets while document gets loaded.
     loadTweets();
-});
+}); //document function ends here
