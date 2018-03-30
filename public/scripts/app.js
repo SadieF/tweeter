@@ -80,6 +80,8 @@ $(document).ready(function() {
             sendTweet({ text });
             $('.counter').html(140);
             this.reset();
+            $('#tweets-container').empty();
+
         }
     })
 

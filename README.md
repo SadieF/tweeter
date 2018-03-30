@@ -12,7 +12,8 @@ Tweeter is a simple, single-page Twitter clone. This was built in week 3 of the 
 2. Install dependencies using the `npm install` command.
 3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
 4. Runo mongo in your command line.
-4. Go to <http://localhost:8080/> in your browser.
+5. Go to <http://localhost:8080/> in your browser.
+6. Text Database of tweets can be found at <http://localhost:8080/tweets>
 
 ## Dependencies
 
