@@ -1,3 +1,4 @@
+require('dotenv').config();
 "use strict";
 
 const PORT = 8080;
@@ -10,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 const MongoClient = require("mongodb").MongoClient;
-const MONGODB_URI = "mongodb://localhost:27017/tweeter";
+const MONGODB_URI = process.env.MONGODB_URI;
 
 //Loads MongoDB and processes for tweet storage
 MongoClient.connect(MONGODB_URI, (err, db) => {
